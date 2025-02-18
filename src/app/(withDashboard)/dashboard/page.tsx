@@ -16,7 +16,9 @@ const DashboardPage = async () => {
                 <Image
                   width={150}
                   height={150}
+                  // @ts-expect-error alt
                   alt={session?.user?.name}
+                  // @ts-expect-error alt
                   src={session?.user?.image}
                   className="w-28 h-w-28 rounded-full"
                 />
