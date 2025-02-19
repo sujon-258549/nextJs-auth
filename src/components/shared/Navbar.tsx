@@ -1,9 +1,12 @@
 "use client";
 import { TSession } from "@/type/login";
+import { tokenInfo } from "@/utils/localStorage/loken";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 const Navbar = ({ session }: { session: TSession | null }) => {
+  const token = tokenInfo();
+  console.log(token);
   console.log(session);
   return (
     <div className="w-[90%] mx-auto flex items-center justify-between bg-white border-b py-4">
@@ -70,7 +73,7 @@ const Navbar = ({ session }: { session: TSession | null }) => {
       </div>
 
       <div className="flex items-center">
-        {session?.user ? (
+        {session?.user || token ? (
           <button
             onClick={() => signOut()}
             className="border border-red-500 text-red-500 px-5 py-2 rounded-full hover:bg-red-500 hover:text-black transition duration-200"
